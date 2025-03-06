@@ -45,7 +45,14 @@ while (i < cafes.length) {
   // para quedarte con esa. Al finalizar el while
   // cafeteriaMasCercana va a tener la que tenga 
   // la propiedad "distance" con el número más bajo
-  
+
+    cafeteriaMasCercana = cafes[i - 1].distance < cafes[i].distance ? cafes[i - 1] : cafes[i];
+
+  // if (cafes[i] < cafes[i-1]) {
+  //   cafeteriaMasCercana = cafes[i];
+  // }else{
+  //   cafeteriaMasCercana = cafes[i-1];
+  // }
   i++;
 }
 
