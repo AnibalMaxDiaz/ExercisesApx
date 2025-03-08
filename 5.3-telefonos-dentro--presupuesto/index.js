@@ -16,14 +16,18 @@ let index = 0;
 
 let telefonosDentroDePresupuesto = [];
 let indiceAux = 0;
-
-while (index < telefonos.length) {
+const numberOfTelephones = telefonos.length;
+while (index < numberOfTelephones) {
   const tel = telefonos[index];
   if (tel.precio <= presupuesto) {
     // Completá la siguiente lógica
     // 1. Cuando encontramos un teléfono dentro del presupuesto, lo añadimos al array `telefonosDentroDePresupuesto`.
     // 2. Usamos el índice `indiceAux` para llevar el control de la posición en el array de acumulación.
     // 3. Incrementamos `indiceAux` para asegurarnos de que el siguiente teléfono se guarde en la siguiente posición del array.
+    telefonosDentroDePresupuesto[indiceAux] = telefonos[index];
+    indiceAux++
+    // The use of the variable indiceAux could avoid use the .push method!
+    
   }
   index++;
 }
