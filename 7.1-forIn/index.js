@@ -24,3 +24,4 @@ for (const id in productos) {
   console.log(`Marca: ${productos[id].marca}`);
   console.log(`Precio: $${productos[id].precio}`);
 }
+
