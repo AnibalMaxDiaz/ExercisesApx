@@ -1,4 +1,3 @@
-// Array de usuarios con sus publicaciones
 const usuarios = [
   {
     id: 1,
@@ -43,27 +42,24 @@ const usuarios = [
   },
 ];
 
+let cont = 0;
+let contAlquiler = 0;
+// const enAlquiler = [];
+const nUsers = usuarios.length;
+while (cont < nUsers) {
+  let cont2 = 0;
+  console.log(`Evaluando al usuario ${usuarios[cont].id}`)
+  while (cont2 < usuarios[cont].publicaciones.length) {
+    if (usuarios[cont].publicaciones[cont2].type === "alquiler") {
+      // the commented lines are to create an array with the new data of properties for rent!
+      // enAlquiler[contAlquiler] = usuarios[cont].publicaciones[cont2];
+      // console.log(enAlquiler[contAlquiler].title);
+      // contAlquiler++;
+      console.log(usuarios[cont].publicaciones[cont2].title);
+    }
+    cont2++;
 
-let indexUsuario = 0;
-
-while (indexUsuario < usuarios.length) {
-  const usuario = usuarios[indexUsuario];
-  console.log("Evaluando el usuario:", usuario.id)
-  // inicializamos otro indice dentro del while principal
-  // esto va a ocurrir una vez para cada usuario
-  let indexPublicacion = 0;
-  
-  // con este while recorremos cada publicacion de este usuario
-  while (indexPublicacion < usuario.publicaciones.length) {
-    
-    // Utiliza el indexPublicacion para acceder a la publicación
-    // Chequea con un if si el type es alquiler
-    // si es así mostralo usando console log()
-    
-    // [Tu lógica va aca]
-
-    indexPublicacion++;
   }
-
-  indexUsuario++;
+  cont++;
+  
 }
