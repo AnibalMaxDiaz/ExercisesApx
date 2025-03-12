@@ -1,3 +1,4 @@
+// Ordenar el mazo de cartas
 const palos = ["♥️", "♦️", "♣️", "♠️"];
 const valores = [
   "A",
