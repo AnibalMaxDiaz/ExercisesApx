@@ -112,8 +112,8 @@ const propiedades = [
     metrosCuadrados: 100,
   },
   {
-    barrio: "Parque Patricios",
-    tipoOperacion: "compra",
+    barrio: "Palermo",
+    tipoOperacion: "alquiler",
     tipoPropiedad: "departamento",
     ambientes: 2,
     precio: 220000,
@@ -140,7 +140,7 @@ for (const propiedad of propiedades) {
   let cumple = false;
   let cumple2 = false
   let cumple3 = false
-  // console.log("1");  
+
   for (const neighborhood of filtros.barrio) {
     // console.log(neighborhood);  
     if (propiedad.barrio === neighborhood) {
@@ -148,7 +148,6 @@ for (const propiedad of propiedades) {
     } 
   }  
   for (const tipo of filtros.tipoPropiedad) {
-    // console.log(tipo);
     if (tipo === propiedad.tipoPropiedad) {
       cumple2 = true;
     }
@@ -171,9 +170,6 @@ for (const propiedad of propiedades) {
     indicePropsFiltradas++;
   }
 }
-// en algunos casos como el de tipoDePropiedad o barrio, vas a necesitar usar
-// otro bucle para iterar todas las posiciones del array de filtros
-// y compararlo con la propiedad
 
 console.log(propiedadesFiltradas);
 console.log("Resultados encontrados: " + propiedadesFiltradas.length);
