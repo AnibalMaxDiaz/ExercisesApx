@@ -1,4 +1,4 @@
-// function to create an array
+// function to create an array!
 function createArray(array){
   for (let i = 0; i < 40 ; i++) {
     const numero = Math.floor(Math.random()*100);
