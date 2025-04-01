@@ -1,6 +1,6 @@
 const readline = require("readline");
-import questions from "./questions.js";
-import playTrivia from "./game.js";
+const questions = require("./questions.js");
+const playTrivia = require("./game.js");
 
 const rl = readline.createInterface({
   input: process.stdin,

@@ -1,4 +1,9 @@
+const readline = require("readline");
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
 let score = 0;
 let index = 0;
@@ -25,4 +30,4 @@ function playTrivia(questions) {
   }
 }
 
-export default{playTrivia};
+module.exports = playTrivia;
