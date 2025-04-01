@@ -8,6 +8,5 @@ const rl = readline.createInterface({
 });
 
 
-
 console.log("¡Bienvenido a la Trivia de Node.js!");
 playTrivia(questions);
