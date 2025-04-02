@@ -1,3 +1,4 @@
+// index hace referencia al archivo de entrada
 const readline = require("readline");
 const questions = require("./questions.js");
 const playTrivia = require("./game.js");
