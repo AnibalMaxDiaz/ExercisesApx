@@ -22,8 +22,6 @@ fs.readFile('./texto.txt', (err, data) => {
 // });
 
 // Exercise 2: "Path" module
-
-
 // Importamos el módulo 'path' que nos permite trabajar con rutas de archivos
 const path = require('path');
 
@@ -91,6 +89,7 @@ server.listen(3000, () => {
   // sugerimos al usuario que ingrese a la dirección del servidor en su navegador
   console.log("Ingresá a http://localhost:3000 en tu navegador (Chrome)");
 });
+
 
 // Este fragmento de código crea un servidor HTTP básico 
 // que responde con un mensaje de texto plano "Hola, mundo!" 
