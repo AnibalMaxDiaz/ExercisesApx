@@ -19,7 +19,7 @@ function busquedaBinaria(arr, val) {
 
 // Ejemplo de uso
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const valorBuscado = 5;
+const valorBuscado = 9;
 const indice = busquedaBinaria(arr, valorBuscado);
 
 if (indice !== -1) {
