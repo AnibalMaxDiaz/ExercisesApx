@@ -1,0 +1,2 @@
+This is the text file that index.js is going to read!
+"Hello world"
