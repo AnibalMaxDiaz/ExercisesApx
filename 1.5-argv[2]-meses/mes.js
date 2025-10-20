@@ -72,10 +72,10 @@ const informacionMensual = [
 // Recordá que el array comienza en 0
 // el mes 1 (enero) corresponde a la posición 0 del array
 // el mes 2 (febrero) corresponde a la posición 1 del array
-const posicionEnElArray = numeroDeMes-1 // tu código;
+const posicionEnElArray = numeroDeMes-1; // tu código;
 const infoDelMes = informacionMensual[posicionEnElArray];
 console.log("Numero de mes:", numeroDeMes);
 console.log("Nombre del mes:", infoDelMes.nombreDelMes);
-// -> Descomentá las siguientes lineas y finaliza tu programa
+
 console.log("Cantidad de días:", infoDelMes.cantidadDeDias /* tu código */);
 console.log("Evento del mes:", infoDelMes.eventoDelMes /* tu código */);

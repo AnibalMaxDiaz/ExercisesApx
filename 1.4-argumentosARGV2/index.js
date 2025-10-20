@@ -1,12 +1,12 @@
 //Saludo
 
-// const miNombre = process.argv[2];
-// console.log(miNombre);
-// console.log(typeof (miNombre));
-// const saludo = "Hello " + miNombre;
-// console.log(saludo);
+const miNombre = process.argv[2];
+console.log(miNombre);
+console.log(typeof (miNombre));
+const saludo = "Hello " + miNombre;
+console.log(saludo);
 
-// Director de la pelicula 
+//Director de la pelicula 
 
 const peli = {
   titulo: "Jurassic Park",
@@ -18,8 +18,8 @@ const peli = {
   calificacionIMDb: 8.1,
 };
 
-// process.argv[2] es el argumento enviado desde la terminal
-const propiedadSeleccionada = process.argv[2];
+// process.argv[3] es el argumento enviado desde la terminal
+const propiedadSeleccionada = process.argv[3];
 console.log(propiedadSeleccionada);
 
 /* 
