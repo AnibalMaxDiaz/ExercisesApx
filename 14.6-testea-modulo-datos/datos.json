@@ -1,0 +1,8 @@
+
+{
+  "Max": { "edad": 18, "nombre": "Max", "cosas": ["guitarra", "piano"] },
+  "Ana": { "edad": 47, "nombre": "Ana", "cosas": ["bateria", "saxofon"] },
+  "Luis": { "edad": 38, "nombre": "Luis", "cosas": ["violin", "flauta"] },
+  "Marta": { "edad": 29, "nombre": "Marta", "cosas": ["cello", "trompeta"] },
+  "David": { "edad": 15, "nombre": "David", "cosas": ["guitarra", "bajo"] }
+}
