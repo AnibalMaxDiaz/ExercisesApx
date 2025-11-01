@@ -12,7 +12,6 @@
 
 const pelis = require('./pelis.js');
 const args = process.argv.slice(2);
-console.log(typeof args)
 
 function parsearInput(args) {
   const comando = {};
@@ -34,6 +33,8 @@ function parsearInput(args) {
 }
 
 function main() {
-console.log(parsearInput(args));
+  console.log(parsearInput(args));
+  console.log(`Este es el listado de todas las peliculas: `)
+  console.table(pelis.getAll());
 }
 main();
