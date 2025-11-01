@@ -1,0 +1,23 @@
+[{
+  "title": "Matrix",
+  "rating": 5,
+  "tags": ["acción", "favorita", "nueva"]
+},
+{
+  "title": "La vida es bella",
+  "rating": 3,
+  "tags": ["favorita", "nueva"]
+},{
+  "title": "Shreck",
+  "rating": 5,
+  "tags": ["acción", "favorita"]
+},{
+  "title": "El Rito",
+  "rating": 2,
+  "tags": ["nueva"]
+},{
+  "title": "Avatar",
+  "rating": 4,
+  "tags": ["acción", "nueva"]
+}
+]
