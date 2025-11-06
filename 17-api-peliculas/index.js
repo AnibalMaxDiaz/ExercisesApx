@@ -34,8 +34,7 @@ function parsearInput(args) {
 
 function main() {
   argumentos = parsearInput(args);
-  console.log(argumentos.sort);
-  //console.log(parsearInput(args));
+  console.log(argumentos);
   console.log(`Este es el listado de todas las peliculas: `)
   // const todasLasPelis = pelis.getAll();
   // console.table(todasLasPelis);
