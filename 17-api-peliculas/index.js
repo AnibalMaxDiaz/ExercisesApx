@@ -36,10 +36,16 @@ function main() {
   argumentos = parsearInput(args);
   console.log(argumentos);
   console.log(`Este es el listado de todas las peliculas: `)
-  // const todasLasPelis = pelis.getAll();
-  // console.table(todasLasPelis);
-  console.table(pelis.getAll());
-  // console.log(ordenarPeliculas(todasLasPelis, XXXXXXX))
+  const todasLasPelis = pelis.getAll();
+  console.table(todasLasPelis);
+  //console.table(pelis.getAll());
+  // Si el usuario pasó el argumento --sort <propiedad>, ordenamos las películas por esa propiedad
+  if (!argumentos.sort) {
+    return;
+  }
+  const ordenarPeliculas = pelis.ordenarPeliculas;
+  console.log(`Listado de peliculas ordenadas por ${argumentos.sort}: `);
+  console.table(ordenarPeliculas(todasLasPelis, argumentos.sort));
 
 }
 main();

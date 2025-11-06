@@ -8,16 +8,21 @@ function getAll() {
   return JSON.parse(data);
 }
 
-// function ordenarPeliculas(pelis, propiedad) {
-//   return pelis.sort((a, b) => {
-//     if (a[propiedad] < b[propiedad]) return -1; // a va antes que b
-//     if (a[propiedad] > b[propiedad]) return 1;  // b va antes que a
-//     return 0; // son iguales
-//   });
-// }
+// Función para ordenar películas por una propiedad específica (título, rating, etc.) 
+// de forma ascendente 
+// Usamos el método sort de los arrays y una función de comparación personalizada
+
+function ordenarPeliculas(pelis, propiedad) {
+  return pelis.sort((a, b) => {
+    // Comparar las propiedades de los objetos a y b
+    if (a[propiedad] < b[propiedad]) return -1; // a va antes que b
+    if (a[propiedad] > b[propiedad]) return 1;  // b va antes que a
+    return 0; // son iguales
+  });
+}
 
 
 
 module.exports = {
-  getAll//, ordenarPeliculas
+  getAll, ordenarPeliculas
 };
