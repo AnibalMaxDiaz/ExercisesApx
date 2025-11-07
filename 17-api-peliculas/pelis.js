@@ -18,20 +18,10 @@ function ordenarPeliculas(pelis, propiedad) {
     if (a[propiedad] < b[propiedad]) return -1; // a va antes que b
     if (a[propiedad] > b[propiedad]) return 1;  // b va antes que a
     return 0; // son iguales
-    // if (propiedad === 'nueva') {
-
-    // }
   });
 }
 
-// const tag = "drama";
-
-// const sorted = [...movies].sort((a, b) => {
-//   const hasA = a.tags.includes(tag);
-//   const hasB = b.tags.includes(tag);
-//   return hasB - hasA; // las que tienen el tag van primero
-// });
-
+// Función para buscar películas por título (texto)
 function buscarPeli(pelis, texto) {
   peliculasFiltradas = pelis.filter(peli => {
     return peli.title.toLowerCase().includes(texto.toLowerCase());
@@ -39,6 +29,7 @@ function buscarPeli(pelis, texto) {
   return peliculasFiltradas;
 }
 
+// Función para filtrar películas por tag
 function pelisPorTag(pelis, tag) {
   console.log(`Listado de peliculas con el tag ${tag}: `);
   pelisFiltradasPorTag = pelis.filter(peli => {
@@ -47,7 +38,7 @@ function pelisPorTag(pelis, tag) {
   return pelisFiltradasPorTag;
 }
 
-
+// Exportar las funciones para que puedan ser usadas en index.js
 module.exports = {
   getAll, ordenarPeliculas, buscarPeli, pelisPorTag
 };
