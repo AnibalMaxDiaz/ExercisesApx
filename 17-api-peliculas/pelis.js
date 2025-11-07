@@ -18,6 +18,9 @@ function ordenarPeliculas(pelis, propiedad) {
     if (a[propiedad] < b[propiedad]) return -1; // a va antes que b
     if (a[propiedad] > b[propiedad]) return 1;  // b va antes que a
     return 0; // son iguales
+    // if (propiedad === 'nueva') {
+
+    // }
   });
 }
 
@@ -29,7 +32,22 @@ function ordenarPeliculas(pelis, propiedad) {
 //   return hasB - hasA; // las que tienen el tag van primero
 // });
 
+function buscarPeli(pelis, texto) {
+  peliculasFiltradas = pelis.filter(peli => {
+    return peli.title.toLowerCase().includes(texto.toLowerCase());
+  });
+  return peliculasFiltradas;
+}
+
+function pelisPorTag(pelis, tag) {
+  console.log(`Listado de peliculas con el tag ${tag}: `);
+  pelisFiltradasPorTag = pelis.filter(peli => {
+    return peli.tags.includes(tag);
+  });
+  return pelisFiltradasPorTag;
+}
+
 
 module.exports = {
-  getAll, ordenarPeliculas
+  getAll, ordenarPeliculas, buscarPeli, pelisPorTag
 };

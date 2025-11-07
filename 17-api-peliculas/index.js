@@ -35,17 +35,23 @@ function parsearInput(args) {
 function main() {
   argumentos = parsearInput(args);
   console.log(argumentos);
-  console.log(`Este es el listado de todas las peliculas: `)
   const todasLasPelis = pelis.getAll();
-  console.table(todasLasPelis);
-  //console.table(pelis.getAll());
-  // Si el usuario pasó el argumento --sort <propiedad>, ordenamos las películas por esa propiedad
-  if (!argumentos.sort) {
-    return;
+  if (args.length === 0) {
+  console.log(`Este es el listado de todas las peliculas: `)
+    console.table(todasLasPelis);
+  }else if (argumentos.sort){
+    const ordenarPeliculas = pelis.ordenarPeliculas;
+    console.log(`Listado de peliculas ordenadas por ${argumentos.sort}: `);
+    console.table(ordenarPeliculas(todasLasPelis, argumentos.sort));
+  }else if (argumentos.tag) {
+    const pelisPorTag = pelis.pelisPorTag;
+    console.table(pelisPorTag(todasLasPelis, argumentos.tag));
   }
-  const ordenarPeliculas = pelis.ordenarPeliculas;
-  console.log(`Listado de peliculas ordenadas por ${argumentos.sort}: `);
-  console.table(ordenarPeliculas(todasLasPelis, argumentos.sort));
+  else if (argumentos.search) {
+    const buscarPeli = pelis.buscarPeli;
+    console.log(`Listado de peliculas que coinciden con el texto "${argumentos.search}": `);
+    console.table(buscarPeli(todasLasPelis, argumentos.search));
+  }
 
 }
 main();
