@@ -21,6 +21,13 @@ function ordenarPeliculas(pelis, propiedad) {
   });
 }
 
+// const tag = "drama";
+
+// const sorted = [...movies].sort((a, b) => {
+//   const hasA = a.tags.includes(tag);
+//   const hasB = b.tags.includes(tag);
+//   return hasB - hasA; // las que tienen el tag van primero
+// });
 
 
 module.exports = {
