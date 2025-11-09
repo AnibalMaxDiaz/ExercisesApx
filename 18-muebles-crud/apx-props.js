@@ -33,10 +33,20 @@ main();
 /**
  * Procesa los argumentos y devuelve un objeto con la información del comando o un error.
  * @param {string[]} args - Lista de argumentos de la CLI.
- * @param {Object} commandsMap - Mapa de comandos disponibles y sus configuraciones.
+ * @param {Object} 
+ *  - Mapa de comandos disponibles y sus configuraciones.
  * @returns {{ command?: string, mainArg?: string, argsObject?: Object, error?: string }} - Resultado del procesamiento.
  */
 function argsController(args, commandsMap) {
+  if (args.length === 0) {
+    return { error: "No command provided." };
+  }
+  const commandName = args[0];
+  const commandConfig = commandsMap[commandName];
+  if (!commandConfig) {
+    return { error: `Unknown command: ${commandName}` };
+  } 
+  
   /*
   PASO A PASO PARA RESOLVER EL PROBLEMA:
   
