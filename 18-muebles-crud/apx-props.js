@@ -5,21 +5,21 @@ function main() {
     create: {
       mainArgRequired: false,
       requiredArgs: ["title", "price"],
-      resolver: createController
+      resolver: createController,
     },
     get: {
       mainArgRequired: true,
-      resolver: getController
+      resolver: getController,
     },
     update: {
       mainArgRequired: true,
       requiredArgs: ["title", "price"],
-      resolver: updateController
+      resolver: updateController,
     },
     del: {
       mainArgRequired: true,
-      resolver: delController
-    }
+      resolver: delController,
+    },
   });
 
   if (argsObject.error) {
@@ -33,7 +33,7 @@ main();
 /**
  * Procesa los argumentos y devuelve un objeto con la información del comando o un error.
  * @param {string[]} args - Lista de argumentos de la CLI.
- * @param {Object} 
+ * @param {Object}
  *  - Mapa de comandos disponibles y sus configuraciones.
  * @returns {{ command?: string, mainArg?: string, argsObject?: Object, error?: string }} - Resultado del procesamiento.
  */
@@ -45,8 +45,56 @@ function argsController(args, commandsMap) {
   const commandConfig = commandsMap[commandName];
   if (!commandConfig) {
     return { error: `Unknown command: ${commandName}` };
-  } 
-  
+  }
+  const mainArg = null;
+  const argsObject = {};
+  let i = 1;
+  if (commandConfig.mainArgRequired) {
+    if (i >= args.length || args[i].startsWith("--")) {
+      return { error: `Missing main argument for command: ${commandName}` };
+    }
+    mainArg = args[i];
+    i++;
+  }
+  // while (i < args.length) {
+  //   const arg = args[i];
+  //   if (arg.startsWith("--")) {
+  //     const key = arg.slice(2);
+  //     let value = true; 
+  //     if (i + 1 < args.length && !args[i + 1].startsWith("--")) {
+  //       value = args[i + 1];
+  //       i++;
+  //     }
+  //     argsObject[key] = value;
+  //   }
+  //   i++;
+  // } 
+  // if (commandConfig.requiredArgs) {
+  //   const missingArgs = commandConfig.requiredArgs.filter(
+  //     (reqArg) => !(reqArg in argsObject)
+  //   );    
+  //   if (missingArgs.length > 0) {
+  //     return {
+  //       error: `Missing required arguments for command ${commandName}: ${missingArgs.join(
+  //         ", "
+  //       )}`,
+  //     };
+  //   }   
+  // }
+  // if (commandConfig.mainArgRequired) {
+  //   commandConfig.resolver(mainArg, argsObject);
+  // } else {
+  //   commandConfig.resolver(argsObject);
+  // } 
+  // return {
+  //   command: commandName,
+  //   mainArg: mainArg,
+  //   argsObject: argsObject,
+  // };
+
+
+
+
   /*
   PASO A PASO PARA RESOLVER EL PROBLEMA:
   
@@ -84,7 +132,6 @@ function argsController(args, commandsMap) {
      - Ejemplo de retorno: `{ command: "update", mainArg: "id-123", argsObject: { title: "Departamento", price: 15000 } }`
   */
 }
-
 
 // Todo lo que viene a continuación está mockeado
 // Esto es para entender la estructura general y no hace mucho más
@@ -143,7 +190,12 @@ function updateProp(id, data) {
  * Obtiene una propiedad de la base de datos según su ID y la devuelve.
  */
 function getProp(id) {
-  return { id, title: "Sample Title", price: 100, createdAt: new Date().toISOString() };
+  return {
+    id,
+    title: "Sample Title",
+    price: 100,
+    createdAt: new Date().toISOString(),
+  };
 }
 
 // Views (mock)
@@ -161,28 +213,34 @@ function testArgsController() {
     create: {
       mainArgRequired: false,
       requiredArgs: ["title", "price"],
-      resolver: () => { },
+      resolver: () => {},
     },
     get: {
       mainArgRequired: true,
-      resolver: () => { },
+      resolver: () => {},
     },
     update: {
       mainArgRequired: true,
-      resolver: () => { },
+      resolver: () => {},
     },
     del: {
       mainArgRequired: true,
-      resolver: () => { },
+      resolver: () => {},
     },
   };
 
   const tests = [
-    { command: ["create", "--title", "Departamento", "--price", "15000"], expectedError: false },
+    {
+      command: ["create", "--title", "Departamento", "--price", "15000"],
+      expectedError: false,
+    },
     { command: ["create", "--title", "Departamento"], expectedError: true },
     { command: ["get", "id-123"], expectedError: false },
     { command: ["get"], expectedError: true },
-    { command: ["update", "id-123", "--precio", "300000"], expectedError: false },
+    {
+      command: ["update", "id-123", "--precio", "300000"],
+      expectedError: false,
+    },
     { command: ["del", "id-123"], expectedError: false },
     { command: ["del"], expectedError: true },
   ];
@@ -190,7 +248,11 @@ function testArgsController() {
   tests.forEach(({ command, expectedError }, index) => {
     const result = argsController(command, commandsMap);
     const hasError = Boolean(result.error);
-    console.log(`Test ${index + 1}: ${hasError === expectedError ? '✅' : '❌'} - Comando: ${command.join(" ")}`);
+    console.log(
+      `Test ${index + 1}: ${
+        hasError === expectedError ? "✅" : "❌"
+      } - Comando: ${command.join(" ")}`
+    );
   });
 }
 
