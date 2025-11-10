@@ -56,6 +56,8 @@ function argsController(args, commandsMap) {
     mainArg = args[i];
     i++;
   }
+  // Procesar los argumentos adicionales
+  
   // while (i < args.length) {
   //   const arg = args[i];
   //   if (arg.startsWith("--")) {
