@@ -58,19 +58,19 @@ function argsController(args, commandsMap) {
   }
   // Procesar los argumentos adicionales
   
-  // while (i < args.length) {
-  //   const arg = args[i];
-  //   if (arg.startsWith("--")) {
-  //     const key = arg.slice(2);
-  //     let value = true; 
-  //     if (i + 1 < args.length && !args[i + 1].startsWith("--")) {
-  //       value = args[i + 1];
-  //       i++;
-  //     }
-  //     argsObject[key] = value;
-  //   }
-  //   i++;
-  // } 
+  while (i < args.length) {
+    const arg = args[i];
+    if (arg.startsWith("--")) {
+      const key = arg.slice(2);
+      let value = true; 
+      if (i + 1 < args.length && !args[i + 1].startsWith("--")) {
+        value = args[i + 1];
+        i++;
+      }
+      argsObject[key] = value;
+    }
+    i++;
+  } 
   // if (commandConfig.requiredArgs) {
   //   const missingArgs = commandConfig.requiredArgs.filter(
   //     (reqArg) => !(reqArg in argsObject)
