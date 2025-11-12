@@ -38,26 +38,34 @@ main();
  * @returns {{ command?: string, mainArg?: string, argsObject?: Object, error?: string }} - Resultado del procesamiento.
  */
 function argsController(args, commandsMap) {
+  // Validación inicial de argumentos y comando
   if (args.length === 0) {
     return { error: "No command provided." };
   }
+  // Extraer el nombre del comando y su configuración
   const commandName = args[0];
   const commandConfig = commandsMap[commandName];
+  // Verificar si el comando existe
   if (!commandConfig) {
     return { error: `Unknown command: ${commandName}` };
   }
-  const mainArg = null;
+  let mainArg = null;
   const argsObject = {};
   let i = 1;
+  // Validar si el argumento principal es requerido funciona para get, updete y del.
+  // Si es así, verificar si está presente y no es una opción (--) 
+  // Si falta, devolver un error
+  // Si no es requerido, continuar con el procesamiento normal de argumentos
   if (commandConfig.mainArgRequired) {
+    // Verificar si el argumento principal está presente y no es una opción (--) 
     if (i >= args.length || args[i].startsWith("--")) {
       return { error: `Missing main argument for command: ${commandName}` };
     }
+    // Asignar el argumento principal y avanzar el índice
     mainArg = args[i];
     i++;
   }
   // Procesar los argumentos adicionales
-  
   while (i < args.length) {
     const arg = args[i];
     if (arg.startsWith("--")) {
@@ -71,28 +79,33 @@ function argsController(args, commandsMap) {
     }
     i++;
   } 
-  // if (commandConfig.requiredArgs) {
-  //   const missingArgs = commandConfig.requiredArgs.filter(
-  //     (reqArg) => !(reqArg in argsObject)
-  //   );    
-  //   if (missingArgs.length > 0) {
-  //     return {
-  //       error: `Missing required arguments for command ${commandName}: ${missingArgs.join(
-  //         ", "
-  //       )}`,
-  //     };
-  //   }   
-  // }
-  // if (commandConfig.mainArgRequired) {
-  //   commandConfig.resolver(mainArg, argsObject);
-  // } else {
-  //   commandConfig.resolver(argsObject);
-  // } 
-  // return {
-  //   command: commandName,
-  //   mainArg: mainArg,
-  //   argsObject: argsObject,
-  // };
+  // Verificar si faltan argumentos requeridos
+  if (commandConfig.requiredArgs) {
+    // Verificar si todos los argumentos requeridos están presentes en argsObject
+    const missingArgs = commandConfig.requiredArgs.filter(
+      (reqArg) => !(reqArg in argsObject)
+    );    
+    // Si faltan argumentos, devolver un error indicando cuáles faltan
+    if (missingArgs.length > 0) {
+      return {
+        error: `Missing required arguments for command ${commandName}: ${missingArgs.join(
+          ", "
+        )}`,
+      };
+    }   
+  }
+  // Ejecutar el resolvedor del comando con los argumentos procesados 
+  // Dependiendo de si el argumento principal es requerido o no
+  if (commandConfig.mainArgRequired) {
+    commandConfig.resolver(mainArg, argsObject);
+  } else {
+    commandConfig.resolver(argsObject);
+  } 
+  return {
+    command: commandName,
+    mainArg: mainArg,
+    argsObject: argsObject,
+  };
 
 
 
@@ -259,4 +272,4 @@ function testArgsController() {
 }
 
 // Descomentá esta linea parar correr los tests y probar tu argsController
-// testArgsController();
+testArgsController();
