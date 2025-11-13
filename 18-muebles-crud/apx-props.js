@@ -71,6 +71,7 @@ function argsController(args, commandsMap) {
     if (arg.startsWith("--")) {
       const key = arg.slice(2);
       let value = true; 
+      // Verificar si el siguiente elemento no es otra opción (--) para asignar un valor
       if (i + 1 < args.length && !args[i + 1].startsWith("--")) {
         value = args[i + 1];
         i++;
@@ -101,6 +102,7 @@ function argsController(args, commandsMap) {
   } else {
     commandConfig.resolver(argsObject);
   } 
+  // Devolver el resultado del procesamiento
   return {
     command: commandName,
     mainArg: mainArg,
